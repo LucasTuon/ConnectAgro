@@ -33,7 +33,7 @@ package "ConnectAgro" {
     }
 }
 
-' Relações de Dependência: As dependências apontam para o centro/domínio (Camada > Camada abaixo)
+' Relações de Dependência:
 
 "1. Apresentação (Web)" --> "2. Aplicação (Serviços)" : Usa serviços
 
