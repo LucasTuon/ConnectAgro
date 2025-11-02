@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
+// Servico de autenticacao singleton para gerenciar o estado do usuario logado
+
 class AuthService extends ChangeNotifier {
-  // --- Padrão Singleton ---
+  
   static final AuthService _instance = AuthService._internal();
   factory AuthService() {
     return _instance;
   }
   AuthService._internal();
-  // -------------------------
 
   Map<String, dynamic>? _currentUser;
 
@@ -15,10 +16,10 @@ class AuthService extends ChangeNotifier {
 
   bool get isLoggedIn => _currentUser != null;
 
-  // Chamado quando o login é bem-sucedido
+  // Chamado quando o login eh com sucesso
   void login(Map<String, dynamic> userData) {
     _currentUser = userData;
-    notifyListeners(); // Avisa aos widgets (ex: AppBar) que o usuário mudou
+    notifyListeners(); // Avisa aos widgets que o usuário mudou
   }
 
   // Chamado quando o usuário clica em "Sair"

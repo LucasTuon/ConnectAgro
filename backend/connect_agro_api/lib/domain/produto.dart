@@ -1,4 +1,3 @@
-// Enum para as categorias de produtos, baseado no seu Figma.
 enum CategoriaProduto {
   vegetais,
   frutas,

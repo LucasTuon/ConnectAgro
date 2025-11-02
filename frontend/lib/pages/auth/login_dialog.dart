@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
-import '../../services/auth_service.dart'; // 1. Importe o novo AuthService
+import '../../services/auth_service.dart'; 
 import '../profile_page.dart';
+
+// Nesse codigo, criamos um dialogo de login e cadastro
+// que permite ao usuario entrar na sua conta ou criar uma nova
 
 class LoginDialog extends StatefulWidget {
   const LoginDialog({super.key});
@@ -15,7 +18,7 @@ class _LoginDialogState extends State<LoginDialog> {
   bool _isLoading = false;
 
   final ApiService _apiService = ApiService();
-  final AuthService _authService = AuthService(); // 2. Crie uma instância do serviço
+  final AuthService _authService = AuthService();
 
   final _loginEmailController = TextEditingController();
   final _loginSenhaController = TextEditingController();
@@ -59,8 +62,6 @@ class _LoginDialogState extends State<LoginDialog> {
 
       if (!mounted) return;
 
-      // 3. MUDANÇA: Salve os dados do usuário no AuthService
-      // Agora o app inteiro "sabe" quem está logado.
       _authService.login(userData);
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -129,6 +130,7 @@ class _LoginDialogState extends State<LoginDialog> {
     }
   }
 
+  // Construindo o widget
   @override
   Widget build(BuildContext context) {
     const Color primaryTextColor = Color.fromARGB(255, 40, 106, 41);

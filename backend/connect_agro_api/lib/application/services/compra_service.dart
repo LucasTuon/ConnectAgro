@@ -9,12 +9,10 @@ class CompraService {
     return await _compraRepository.listarPorCompradorId(compradorId);
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
-  /// Orquestra a finalização de uma compra.
+  // Simula a compra de produtos por um ponto de venda
+  // Aqui poderiam ter logicas adicionais, como verificacao de estoque, processamento de pagamento, etc
   Future<void> salvarCompra(int pontoDeVendaId, List<Map<String, dynamic>> items) async {
     try {
-      // Aqui poderíamos ter lógicas de negócio, como validar estoque, etc.
-      // Por enquanto, apenas repassamos para o repositório.
       await _compraRepository.salvarCompra(pontoDeVendaId, items);
     } catch (e) {
       print('Erro no serviço ao salvar compra: $e');

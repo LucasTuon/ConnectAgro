@@ -7,7 +7,7 @@ class CadastroHandler {
 
   CadastroHandler(this._cadastroService);
 
-  /// Manipula a requisição de cadastro de usuário
+  // A funcao que lida com o cadastro de usuario
   Future<Response> cadastrarUsuario(Request request) async {
     try {
       final body = await request.readAsString();
@@ -17,7 +17,7 @@ class CadastroHandler {
       
       final data = jsonDecode(body) as Map<String, dynamic>;
 
-      // Extraímos os campos obrigatórios
+      // Pegamos os campos obrigatorios do corpo da requisicao
       final nome = data['nome'] as String?;
       final email = data['email'] as String?;
       final senha = data['senha'] as String?;
@@ -26,11 +26,10 @@ class CadastroHandler {
       final cidade = data['cidade'] as String?;
       final estado = data['estado'] as String?;
       
-      // MUDANÇA 1: Extraímos o campo opcional 'foto_url'.
-      // Se não for enviado, o valor será null.
+      // O campo fotoUrl eh opcional
       final fotoUrl = data['foto_url'] as String?;
 
-      // Atualizamos a validação para os campos obrigatórios.
+      // Validacao basica dos campos obrigatorios
       if (nome == null ||
           email == null ||
           senha == null ||
@@ -41,7 +40,7 @@ class CadastroHandler {
         return Response.badRequest(body: 'Dados incompletos. Todos os campos, exceto a foto, são necessários.');
       }
       
-      // MUDANÇA 2: Passamos o novo dado (que pode ser null) para o serviço.
+      // Chamamos o servico para cadastrar o usuario
       await _cadastroService.cadastrarUsuario(
         nome: nome,
         email: email,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+// Widget de banner principal (hero) na pagina inicial
+// Inclui titulo, subtitulo, barra de busca e imagem
+
 class HeroBanner extends StatelessWidget {
-  // 1. O banner agora espera receber o controller e a função
+
   final TextEditingController searchController;
   final VoidCallback onSearchPressed;
 
@@ -52,18 +55,18 @@ class HeroBanner extends StatelessWidget {
                         const SizedBox(width: 8),
                         Expanded(
                           child: TextField(
-                            // 2. Conecta o controller ao TextField
+                            // Conecta o controller ao TextField
                             controller: searchController,
                             decoration: const InputDecoration(
                               hintText: 'Ex: tomates orgânicos',
                               border: InputBorder.none,
                             ),
-                            // 3. Permite buscar com "Enter"
+                            // Permite buscar com "Enter"
                             onSubmitted: (_) => onSearchPressed(),
                           ),
                         ),
                         ElevatedButton(
-                          // 4. Conecta o botão à função
+                          // Conecta o botão na função
                           onPressed: onSearchPressed,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryGreenButtonColor,

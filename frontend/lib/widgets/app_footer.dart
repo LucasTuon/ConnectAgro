@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'centered_constrained_view.dart';
 
+// Widget do rodape
+
 class AppFooter extends StatelessWidget {
   const AppFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green.shade800, // Um verde bem escuro
+      color: Colors.green.shade800,
       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24.0),
       child: CenteredConstrainedView(
         child: Column(
           children: [
-            // Seção principal com as colunas de links
+            // Secao principal com as colunas de links
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +53,7 @@ class AppFooter extends StatelessWidget {
             const Divider(color: Colors.white54, height: 60),
             // Seção de Copyright
             const Text(
-              '© 2024 ConnectAgro. Todos os direitos reservados.',
+              '© 2025 ConnectAgro. Todos os direitos reservados.',
               style: TextStyle(color: Colors.white70, fontSize: 12),
             ),
           ],

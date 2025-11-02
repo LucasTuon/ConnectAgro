@@ -11,7 +11,10 @@ import '../widgets/producer_card.dart';
 import '../widgets/stats_banner.dart';
 import 'auth/login_dialog.dart';
 import 'cart_page.dart';
-import 'search_page.dart'; // Importe a nova SearchPage
+import 'search_page.dart'; 
+
+// Pagina inicial do aplicativo
+// Exibe banners, categorias, produtos em destaque e produtores verificados
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  // Função que navega para a página de busca
+  // Funcao que navega para a página de busca
   void _navigateToSearchPage() {
     if (_searchController.text.isNotEmpty) {
       Navigator.push(
@@ -55,6 +58,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // Construindo o widget principal
   @override
   Widget build(BuildContext context) {
     const Color lightGreenBackground = Color(0xFFF0FFF0);
@@ -99,7 +103,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          // Passe o controller e a função para o HeroBanner
+          // Passe o controller e a funcao para o HeroBanner
           HeroBanner(
             searchController: _searchController,
             onSearchPressed: _navigateToSearchPage,

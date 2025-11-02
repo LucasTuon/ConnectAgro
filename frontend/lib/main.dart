@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-// 1. Importe a nova HomePage
 import 'pages/home_page.dart';
+
+// Ponto de entrada da aplicacao
+// Aqui definimos o tema global e a tela inicial
 
 void main() {
   runApp(const MyApp());

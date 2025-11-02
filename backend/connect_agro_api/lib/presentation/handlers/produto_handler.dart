@@ -8,6 +8,7 @@ class ProdutoHandler {
 
   ProdutoHandler(this._produtoService);
 
+  // Funcao para criar um novo produto (POST /produtos)
   Future<Response> criarProduto(Request request) async {
     try {
       final body = await request.readAsString();
@@ -45,6 +46,7 @@ class ProdutoHandler {
     }
   }
 
+  // Funcao para listar todos os produtos (GET /produtos)
   Future<Response> listarTodosProdutos(Request request) async {
     try {
       final produtos = await _produtoService.listarTodosProdutos();
@@ -59,6 +61,7 @@ class ProdutoHandler {
     }
   }
 
+  // Funcao para listar produtos por ID do produtor (GET /produtos/produtor/{produtorId})
   Future<Response> listarProdutosPorProdutor(Request request, String produtorIdString) async {
     try {
       final int produtorId = int.parse(produtorIdString);
@@ -76,6 +79,7 @@ class ProdutoHandler {
     }
   }
 
+  // Funcao para atualizar um produto (PUT /produtos/{id})
   Future<Response> atualizarProduto(Request request, String id) async {
     try {
       final int produtoId = int.parse(id);
@@ -90,6 +94,7 @@ class ProdutoHandler {
     }
   }
 
+  // Funcao para deletar um produto (DELETE /produtos/{id})
   Future<Response> deletarProduto(Request request, String id) async {
     try {
       final int produtoId = int.parse(id);
@@ -101,21 +106,21 @@ class ProdutoHandler {
     }
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
-  /// Manipula a requisição para buscar produtos por nome (GET /produtos/buscar?q=...)
+  
+  // Manipula a requisicao para buscar produtos por nome (GET /produtos/buscar?q=...)
   Future<Response> buscarProdutosPorNome(Request request) async {
     try {
-      // 1. Lê o parâmetro de consulta 'q' da URL.
+      // Le o parâmetro de consulta 'q' da URL
       final String? termoBusca = request.url.queryParameters['q'];
 
       if (termoBusca == null || termoBusca.isEmpty) {
         return Response.badRequest(body: "Parâmetro de busca 'q' é obrigatório.");
       }
 
-      // 2. Chama o serviço com o termo de busca.
+      // Chama o serviço com o termo de busca
       final produtos = await _produtoService.buscarProdutosPorNome(termoBusca);
       
-      // 3. Mapeia e retorna os resultados.
+      // Mapeia e retorna os resultados
       final produtosJson = _mapearListaProdutosParaJson(produtos);
       return Response.ok(
         jsonEncode(produtosJson),
@@ -127,8 +132,7 @@ class ProdutoHandler {
     }
   }
 
-  // --- NOVO MÉTODO AUXILIAR PRIVADO ---
-  /// Mapeia uma lista de objetos Produto para o formato JSON.
+  // Mapeia uma lista de objetos Produto para o formato JSON
   List<Map<String, dynamic>> _mapearListaProdutosParaJson(List<Produto> produtos) {
     return produtos.map((produto) => {
       'id': produto.id,

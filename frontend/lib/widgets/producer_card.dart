@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import '../models/usuario.dart'; // 1. Importe o nosso modelo Usuario
 
+// Card de produtor para exibir na tela inicial
+// Mostra foto, nome, estabelecimento, localizacao, descricao, tags, estatisticas e botao
+
 class ProducerCard extends StatelessWidget {
-  // 2. O card agora espera receber um objeto Usuario
+  
   final Usuario produtor;
   
   const ProducerCard({super.key, required this.produtor});
 
   @override
   Widget build(BuildContext context) {
-    // 3. Usamos os dados do produtor (com valores padrão para o caso de serem nulos)
+    // Usamos os dados do produtor (com valores padrão para o caso de serem nulos)
     final String fotoUrl = produtor.fotoUrl ?? 'https://via.placeholder.com/150'; // Uma URL de placeholder
     final String nomeEstabelecimento = produtor.nomeEstabelecimento ?? 'Estabelecimento não informado';
     final String cidade = produtor.cidade ?? 'Cidade não informada';
@@ -57,14 +60,14 @@ class ProducerCard extends StatelessWidget {
                       Text(nomeEstabelecimento, // Usa o nome real do estabelecimento
                           style: TextStyle(color: Colors.grey[700])),
                       const SizedBox(height: 4),
-                      Text('$cidade, $estado', // Usa a localização real
+                      Text('$cidade, $estado', // Usa a localizacao real
                           style: TextStyle(color: Colors.grey[600], fontSize: 12)),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              // Descrição (usaremos placeholder por enquanto, pois não está no modelo)
+              // Descricao
               const Text(
                 'Produtor orgânico especializado em produtos frescos e sustentáveis.',
                 style: TextStyle(fontSize: 14, color: Colors.black87),
@@ -81,7 +84,7 @@ class ProducerCard extends StatelessWidget {
                 ],
               ),
               const Divider(height: 24),
-              // Estatísticas (usaremos placeholders por enquanto)
+              // Estatisticas
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -91,7 +94,7 @@ class ProducerCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              // Botão de Ver Produtos
+              // Botao de Ver Produtos
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(

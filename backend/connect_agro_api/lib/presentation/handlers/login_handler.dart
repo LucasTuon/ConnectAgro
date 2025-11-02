@@ -7,6 +7,7 @@ class LoginHandler {
 
   LoginHandler(this._loginService);
 
+  // A funcao que lida com o login do usuario
   Future<Response> login(Request request) async {
     try {
       final body = await request.readAsString();
@@ -24,12 +25,12 @@ class LoginHandler {
 
       final usuario = await _loginService.login(email: email, senha: senha);
 
-      // MUDANÇA: Agora retornamos todos os dados do usuário no corpo da resposta.
+      
       final responseBody = jsonEncode({
         'id': usuario.id,
         'nome': usuario.nome,
         'email': usuario.email,
-        'tipo_usuario': usuario.tipoUsuario.name, // Ex: 'produtor'
+        'tipo_usuario': usuario.tipoUsuario.name,
         'nome_estabelecimento': usuario.nomeEstabelecimento,
         'cidade': usuario.cidade,
         'estado': usuario.estado,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../models/cart_item.dart';
 import '../services/api_service.dart';
-import '../services/auth_service.dart'; // 1. Importe o AuthService
+import '../services/auth_service.dart'; 
 import '../services/cart_service.dart';
-import 'profile_page.dart'; // 2. Importe a ProfilePage para o redirecionamento
+import 'profile_page.dart'; 
 
-// MUDANÇA 3: Convertemos para StatefulWidget para gerenciar o _isLoading
+// Pagina que exibe o carrinho de compras
+// Faz a ligacao com o CartService para mostrar os itens
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
@@ -19,9 +20,9 @@ class _CartPageState extends State<CartPage> {
   final AuthService _authService = AuthService();
   bool _isLoading = false;
 
-  // MUDANÇA 4: Lógica para finalizar a compra
+  // Logica para finalizar a compra
   Future<void> _handleFinalizarCompra() async {
-    // 1. Verifica se o usuário está logado
+    // Verifica se o usuario está logado
     if (!_authService.isLoggedIn) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Você precisa estar logado para finalizar a compra.'), backgroundColor: Colors.red),
@@ -29,7 +30,7 @@ class _CartPageState extends State<CartPage> {
       return;
     }
 
-    // 2. Pega os dados necessários
+    // Pega os dados necessários
     final int compradorId = _authService.currentUser!['id'];
     final List<Map<String, dynamic>> itemsParaApi = _cartService.items.map((item) {
       return {
@@ -43,18 +44,15 @@ class _CartPageState extends State<CartPage> {
     setState(() { _isLoading = true; });
 
     try {
-      // 3. Chama a API
       await _apiService.finalizarCompra(compradorId, itemsParaApi);
 
       if (!mounted) return;
 
-      // 4. Limpa o carrinho no front-end
       _cartService.clearCart();
 
-      // 5. Redireciona para o Perfil
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Compra finalizada com sucesso!'), backgroundColor: Colors.green));
       
-      // Usamos pushReplacement para que o usuário não possa "voltar" para o carrinho vazio
+      // Usamos pushReplacement para que o usuario não possa voltar para o carrinho vazio
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => ProfilePage(userData: _authService.currentUser!)),
       );
@@ -75,7 +73,6 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     final Color primaryGreen = Colors.green.shade700;
     
-    // MUDANÇA 5: O AnimatedBuilder agora está dentro do build de um StatefulWidget
     return AnimatedBuilder(
       animation: _cartService,
       builder: (context, child) {
@@ -118,6 +115,7 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
+  // Construindo cada item do carrinho
   Widget _buildCartItem(CartItem item, Color primaryGreen) {
     return Card(
       color: Colors.white,
@@ -159,6 +157,7 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
+  // Construindo o resumo e o botao de finalizar compra
   Widget _buildSummary(double total, Color primaryGreen) {
     return Container(
       padding: const EdgeInsets.all(24.0),

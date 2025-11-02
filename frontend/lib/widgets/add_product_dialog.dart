@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 
+// Dialogo para adicionar um novo produto
+
 class AddProductDialog extends StatefulWidget {
-  // O dialog agora precisa saber qual produtor está cadastrando.
+
   final int produtorId;
   const AddProductDialog({super.key, required this.produtorId});
 
@@ -34,8 +36,9 @@ class _AddProductDialogState extends State<AddProductDialog> {
     super.dispose();
   }
 
+  // Logica para salvar o produto
   Future<void> _handleSalvarProduto() async {
-    // Valida se todos os campos do formulário foram preenchidos corretamente
+    // Valida se todos os campos do formulario foram preenchidos corretamente
     if (!(_formKey.currentState?.validate() ?? false)) {
       return;
     }
@@ -68,6 +71,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
     }
   }
 
+  // Build do dialogo
   @override
   Widget build(BuildContext context) {
     final primaryGreen = Colors.green.shade700;
@@ -83,7 +87,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Container(
         padding: const EdgeInsets.all(24.0),
-        width: 500, // Um pouco mais largo para o formulário
+        width: 500, // Um pouco mais largo para o formulario
         child: Form(
           key: _formKey,
           child: Column(

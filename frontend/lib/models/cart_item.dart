@@ -1,5 +1,7 @@
 import 'produto.dart';
 
+// Modelo que representa um item no carrinho de compras
+// Serve para armazenar o produto e a quantidade selecionada
 class CartItem {
   final Produto produto;
   int quantidade;

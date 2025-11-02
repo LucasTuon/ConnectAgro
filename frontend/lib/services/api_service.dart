@@ -3,6 +3,9 @@ import 'package:http/http.dart' as http;
 import '../models/produto.dart';
 import '../models/usuario.dart';
 
+// Servico responsável por interagir com a API backend
+// Fornece metodos para listar produtos, cadastrar usuarios, login, etc
+
 class ApiService {
   final String _baseUrl = 'http://localhost:8080';
 
@@ -16,6 +19,7 @@ class ApiService {
     }
   }
 
+  // Metodo para cadastrar um novo usuario
   Future<void> cadastrarUsuario({
     required String nome,
     required String email,
@@ -44,7 +48,8 @@ class ApiService {
       throw Exception('Falha ao cadastrar usuário: ${response.body}');
     }
   }
-
+  
+  // Metodo para login de usuario
   Future<Map<String, dynamic>> login({
     required String email,
     required String senha,
@@ -61,6 +66,7 @@ class ApiService {
     }
   }
   
+  // Metodo para listar produtos por ID do produtor
   Future<List<Produto>> listarProdutosPorProdutor(int produtorId) async {
     final response = await http.get(Uri.parse('$_baseUrl/produtores/$produtorId/produtos'));
     if (response.statusCode == 200) {
@@ -71,6 +77,7 @@ class ApiService {
     }
   }
   
+  // Metodo para cadastrar um novo produto
   Future<void> cadastrarProduto({
     required String nome,
     required String descricao,
@@ -102,6 +109,7 @@ class ApiService {
     }
   }
 
+  // Metodo para atualizar um produto
   Future<void> atualizarProduto(int id, Map<String, dynamic> data) async {
     final response = await http.put(
       Uri.parse('$_baseUrl/produtos/$id'),
@@ -113,6 +121,7 @@ class ApiService {
     }
   }
 
+  // Metodo para deletar um produto
   Future<void> deletarProduto(int id) async {
     final response = await http.delete(Uri.parse('$_baseUrl/produtos/$id'));
     if (response.statusCode != 200) {
@@ -120,6 +129,7 @@ class ApiService {
     }
   }
   
+  // Metodo para listar o historico de compras de um comprador
   Future<List<Map<String, dynamic>>> listarHistoricoCompras(int compradorId) async {
     final response = await http.get(Uri.parse('$_baseUrl/compradores/$compradorId/historico'));
     if (response.statusCode == 200) {
@@ -130,6 +140,7 @@ class ApiService {
     }
   }
 
+  // Metodo para listar todos os produtores
   Future<List<Usuario>> listarProdutores() async {
     final response = await http.get(Uri.parse('$_baseUrl/produtores'));
     if (response.statusCode == 200) {
@@ -140,7 +151,7 @@ class ApiService {
     }
   }
 
-  /// Busca produtos na API com base em um termo de pesquisa.
+  /// Busca produtos na API com base em um termo de pesquisa
   Future<List<Produto>> buscarProdutos(String termo) async {
     // Codifica o termo de busca para ser seguro em uma URL (ex: "Tomate Orgânico" -> "Tomate%20Orgânico")
     final String termoCodificado = Uri.encodeComponent(termo);
@@ -154,15 +165,14 @@ class ApiService {
     }
   }
 
-  // --- MÉTODO DE FINALIZAR COMPRA ADICIONADO ABAIXO ---
-
+  // Metodo para finalizar uma compra
   Future<void> finalizarCompra(int pontoDeVendaId, List<Map<String, dynamic>> items) async {
     final response = await http.post(
       Uri.parse('$_baseUrl/compras'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      // Monta o JSON exatamente como o back-end espera
+      // Monta o JSON do corpo da requisicao
       body: jsonEncode(<String, dynamic>{
         'ponto_de_venda_id': pontoDeVendaId,
         'items': items,
@@ -170,7 +180,6 @@ class ApiService {
     );
 
     if (response.statusCode != 200) {
-      // O back-end retorna 200 OK (e não 201)
       throw Exception('Falha ao finalizar a compra: ${response.body}');
     }
   }

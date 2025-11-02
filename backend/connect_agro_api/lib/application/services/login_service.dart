@@ -12,7 +12,7 @@ class LoginService {
     required String email,
     required String senha,
   }) async {
-    // Usa o repositorio para buscar o usuário pelo e-mail
+    // Usa o repositorio para buscar o usuario pelo e-mail
     final usuario = await _usuarioRepository.buscarPorEmail(email);
 
     // Verifica se o usuario existe
@@ -28,7 +28,7 @@ class LoginService {
       throw Exception('Senha incorreta.');
     }
 
-    // Se tudo estiver correto, retorna o usuário.
+    // Se tudo estiver correto, retorna o usuario
     return usuario;
   }
 }

@@ -1,11 +1,13 @@
 import 'package:mysql1/mysql1.dart';
 import '../../domain/compra.dart';
 
+// Repositorio para gerenciar compras no banco de dados MySQL
 class CompraRepositoryMysql {
   final MySqlConnection _dbConnection;
 
   CompraRepositoryMysql(this._dbConnection);
 
+  // Metodo para listar o historico de compras de um ponto de venda
   Future<List<Compra>> listarPorCompradorId(int compradorId) async {
     try {
       const String query = '''
@@ -38,10 +40,8 @@ class CompraRepositoryMysql {
     }
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
-  /// Salva uma lista de itens de compra dentro de uma transação.
+  /// Salva uma lista de itens de compra dentro de uma transacao
   Future<void> salvarCompra(int pontoDeVendaId, List<Map<String, dynamic>> items) async {
-    // Usamos uma transação para garantir que todos os itens sejam salvos, ou nenhum.
     await _dbConnection.transaction((trans) async {
       for (var item in items) {
         const String query = '''

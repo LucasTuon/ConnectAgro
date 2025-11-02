@@ -7,6 +7,7 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
 
   ProdutoRepositoryMysql(this._dbConnection);
 
+  // Metodo para salvar um produto
   @override
   Future<void> salvar(Produto produto) async {
     try {
@@ -31,6 +32,7 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
+  // Metodo para listar todos os produtos
   @override
   Future<List<Produto>> listarTodos() async {
     try {
@@ -43,6 +45,7 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
+  // Metodo para listar produtos por ID do produtor
   @override
   Future<List<Produto>> listarPorProdutorId(int produtorId) async {
     try {
@@ -55,6 +58,7 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
+  // Metodo para atualizar um produto
   @override
   Future<void> atualizar(Produto produto) async {
     try {
@@ -81,6 +85,7 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
+  // Metodo para deletar um produto por ID
   @override
   Future<void> deletar(int id) async {
     try {
@@ -92,14 +97,13 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
+  // Metodo para buscar produtos por nome
   @override
   Future<List<Produto>> buscarPorNome(String termo) async {
     try {
-      // Usamos 'LIKE' com '%' para buscar nomes que contenham o termo.
+      
       const String query = 'SELECT * FROM Produtos WHERE nome LIKE ?;';
       
-      // Formatamos o termo de busca para '%termo%'
       final results = await _dbConnection.query(query, ['%$termo%']);
       
       return _mapearResultadosParaProdutos(results);
@@ -109,9 +113,8 @@ class ProdutoRepositoryMysql implements IProdutoRepository {
     }
   }
 
-  // --- NOVO MÉTODO AUXILIAR PRIVADO ---
-  /// Mapeia os resultados de uma query (Results) para uma lista de Objetos Produto.
-  /// Isso evita a repetição de código que estávamos tendo.
+  
+  // Mapeia os resultados de uma query  para uma lista de Objetos Produto
   List<Produto> _mapearResultadosParaProdutos(Results results) {
     return results.map((row) {
       final categoria = CategoriaProduto.values.firstWhere(

@@ -7,6 +7,7 @@ class UsuarioRepositoryMysql implements IUsuarioRepository {
 
   UsuarioRepositoryMysql(this._dbConnection);
 
+  // Metodo para salvar um usuario
   @override
   Future<void> salvar(Usuario usuario) async {
     try {
@@ -33,6 +34,7 @@ class UsuarioRepositoryMysql implements IUsuarioRepository {
     }
   }
 
+  // Metodo para buscar um usuario por email
   @override
   Future<Usuario?> buscarPorEmail(String email) async {
     try {
@@ -67,7 +69,7 @@ class UsuarioRepositoryMysql implements IUsuarioRepository {
     }
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
+  // Metodo para listar todos os produtores
   @override
   Future<List<Usuario>> listarProdutores() async {
     try {

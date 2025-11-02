@@ -1,11 +1,13 @@
 import '../../domain/produto.dart';
 import '../repositories/produto_repository.dart';
 
+// Servico responsavel pelo caso de uso de gerenciamento de produtos
 class ProdutoService {
   final IProdutoRepository _produtoRepository;
 
   ProdutoService(this._produtoRepository);
 
+  // Metodo para criar um novo produto
   Future<void> criarProduto({
     required String nome,
     required String descricao,
@@ -37,6 +39,7 @@ class ProdutoService {
     }
   }
 
+  // Metodo para listar todos os produtos
   Future<List<Produto>> listarTodosProdutos() async {
     try {
       return await _produtoRepository.listarTodos();
@@ -46,6 +49,7 @@ class ProdutoService {
     }
   }
   
+  // Metodo para listar produtos por ID do produtor
   Future<List<Produto>> listarProdutosPorProdutor(int produtorId) async {
     try {
       return await _produtoRepository.listarPorProdutorId(produtorId);
@@ -55,9 +59,8 @@ class ProdutoService {
     }
   }
   
+  // Metodo para atualizar um produto
   Future<void> atualizarProduto(int id, Map<String, dynamic> data) async {
-    // Para simplificar, estamos recriando o objeto. Em um sistema maior,
-    // buscaríamos o produto original primeiro.
     final produto = Produto(
       id: id,
       nome: data['nome'],
@@ -68,17 +71,17 @@ class ProdutoService {
       categoria: CategoriaProduto.values.firstWhere((e) => e.name == data['categoria']),
       quantidadeEstoque: data['quantidade_estoque'],
       dataColheita: data['data_colheita'] != null ? DateTime.parse(data['data_colheita']) : null,
-      produtorId: 0, // O produtorId não é atualizado, então 0 é um placeholder
+      produtorId: 0, // O produtorId nao eh atualizado, então 0 eh um placeholder
     );
     await _produtoRepository.atualizar(produto);
   }
 
+  // Metodo para deletar um produto por ID
   Future<void> deletarProduto(int id) async {
     await _produtoRepository.deletar(id);
   }
 
-  // --- NOVO MÉTODO ABAIXO ---
-  /// Solicita a busca de produtos por nome.
+  /// Solicita a busca de produtos por nome
   Future<List<Produto>> buscarProdutosPorNome(String termo) async {
     try {
       return await _produtoRepository.buscarPorNome(termo);

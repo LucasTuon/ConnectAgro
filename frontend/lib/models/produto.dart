@@ -1,14 +1,17 @@
+
+// Modelo que representa um produto
+// Serve para mapear os dados recebidos da API
 class Produto {
   final int id;
   final String nome;
   final String descricao;
   final double preco;
-  final String? unidade; // Adicionado
+  final String? unidade; 
   final String imagemUrl;
   final String categoria;
-  final int quantidadeEstoque; // Adicionado
-  final double avaliacaoMedia;    // Adicionado
-  final int totalAvaliacoes;     // Adicionado
+  final int quantidadeEstoque;
+  final double avaliacaoMedia;
+  final int totalAvaliacoes;
   final int produtorId;
 
   Produto({
@@ -25,6 +28,7 @@ class Produto {
     required this.produtorId,
   });
 
+  // Metodo para criar um objeto Produto a partir de um JSON
   factory Produto.fromJson(Map<String, dynamic> json) {
     return Produto(
       id: json['id'],

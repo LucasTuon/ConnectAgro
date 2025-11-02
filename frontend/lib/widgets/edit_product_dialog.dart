@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/produto.dart';
 import '../services/api_service.dart';
 
+// Dialogo para editar um produto existente
+// Recebe o produto a ser editado como parametro
+
 class EditProductDialog extends StatefulWidget {
   final Produto produto; // Recebe o produto a ser editado
   const EditProductDialog({super.key, required this.produto});
@@ -26,7 +29,7 @@ class _EditProductDialogState extends State<EditProductDialog> {
   @override
   void initState() {
     super.initState();
-    // Pré-preenche os campos com os dados do produto existente
+    // Preenche os campos com os dados do produto existente
     _nomeController = TextEditingController(text: widget.produto.nome);
     _descricaoController = TextEditingController(text: widget.produto.descricao);
     _precoController = TextEditingController(text: widget.produto.preco.toString());

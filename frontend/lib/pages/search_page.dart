@@ -3,8 +3,11 @@ import '../models/produto.dart';
 import '../services/api_service.dart';
 import '../widgets/product_card.dart';
 
+// Pagina de busca de produtos
+// Permite ao usuario buscar produtos por nome
+
 class SearchPage extends StatefulWidget {
-  // A página recebe o termo de busca inicial da HomePage
+  // a pagina recebe o termo de busca inicial da HomePage
   final String termoBuscaInicial;
 
   const SearchPage({super.key, required this.termoBuscaInicial});
@@ -21,41 +24,43 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();
-    // 1. Pré-preenche o campo de busca com o termo vindo da HomePage
+    // Preenche o campo de busca com o termo inicial
     _searchController.text = widget.termoBuscaInicial;
-    // 2. Inicia a primeira busca
+    // Inicia a busca com o termo inicial
     _buscarProdutos();
   }
 
-  // Método para (re)iniciar a busca
+  // Metodo para buscar produtos
   void _buscarProdutos() {
     setState(() {
       _searchFuture = _apiService.buscarProdutos(_searchController.text);
     });
   }
 
+  // Limpa o controlador ao descartar o widget
   @override
   void dispose() {
     _searchController.dispose();
     super.dispose();
   }
 
+  // Construindo o widget principal
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Esta é a barra de busca no topo da página
+        // Barra de busca personalizada
         title: _buildSearchBar(),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         elevation: 1,
       ),
-      backgroundColor: const Color(0xFFF0FFF0), // Fundo verde claro
+      backgroundColor: const Color(0xFFF0FFF0),
       body: _buildResultados(),
     );
   }
 
-  // Constrói a barra de busca no topo (similar ao HeroBanner)
+  // Constroi a barra de busca
   Widget _buildSearchBar() {
     return Container(
       decoration: BoxDecoration(
@@ -81,7 +86,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             ElevatedButton(
-              onPressed: _buscarProdutos, // Botão também inicia a busca
+              onPressed: _buscarProdutos, // Botao tambem inicia a busca
               child: const Text('Buscar'),
             ),
           ],
@@ -90,7 +95,7 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  // Constrói a grade de resultados
+  // Constroi a grade de resultados
   Widget _buildResultados() {
     return FutureBuilder<List<Produto>>(
       future: _searchFuture,

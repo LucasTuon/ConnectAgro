@@ -7,7 +7,7 @@ class UsuarioHandler {
 
   UsuarioHandler(this._usuarioService);
 
-  /// Manipula a requisição para listar todos os produtores (GET /produtores)
+  // Manipula a requisicao para listar todos os produtores (GET /produtores)
   Future<Response> listarProdutores(Request request) async {
     try {
       final produtores = await _usuarioService.listarProdutores();
@@ -20,7 +20,7 @@ class UsuarioHandler {
             'cidade': produtor.cidade,
             'estado': produtor.estado,
             'foto_url': produtor.fotoUrl,
-            // Não enviamos a senha ou outras informações sensíveis
+            // Nao enviamos a senha por motivos de seguranca
           }).toList();
 
       return Response.ok(

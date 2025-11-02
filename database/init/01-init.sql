@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
     nome_estabelecimento VARCHAR(255),
     cidade VARCHAR(100),
     estado VARCHAR(50),
-    foto_url VARCHAR(2083), -- NOVO: Para guardar o link da foto de perfil
+    foto_url VARCHAR(2083),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

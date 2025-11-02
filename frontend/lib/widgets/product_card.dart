@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/produto.dart';
-import '../services/cart_service.dart'; // 1. Importe o cérebro do carrinho
+import '../services/cart_service.dart'; 
+
+// Card de produto para exibir na grade de produtos
+// Mostra imagem, nome, descricao, avaliacao, estoque, preco e botao de adicionar ao carrinho
 
 class ProductCard extends StatelessWidget {
   final Produto produto;
@@ -51,7 +54,7 @@ class ProductCard extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const Spacer(), // Empurra o conteúdo abaixo para o fundo
+                  const Spacer(), // Empurra o conteudo abaixo para o fundo
                   Row(
                     children: [
                       const Icon(Icons.star, color: Colors.amber, size: 16),
@@ -78,12 +81,12 @@ class ProductCard extends StatelessWidget {
                       ),
                       ElevatedButton.icon(
                         onPressed: () {
-                          // 1. Pega a instância global do serviço
+                          // Pega a instância global do serviço
                           final cartService = CartService();
-                          // 2. Adiciona o produto deste card
+                          // Adiciona o produto deste card
                           cartService.addToCart(produto);
                           
-                          // 3. Mostra um feedback visual para o usuário
+                          // Mostra um feedback visual para o usuário
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text('${produto.nome} adicionado ao carrinho!'),

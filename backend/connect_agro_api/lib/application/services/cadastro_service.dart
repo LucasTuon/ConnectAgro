@@ -1,12 +1,13 @@
 import '../../domain/usuario.dart';
 import '../repositories/usuario_repository.dart';
 
+// Serviço responsavel pelo caso de uso de cadastro de usuario
 class CadastroService {
   final IUsuarioRepository _usuarioRepository;
 
   CadastroService(this._usuarioRepository);
 
-  /// Executa o caso de uso de cadastrar um novo usuário.
+  /// Executa o caso de uso de cadastrar um novo usuario
   Future<void> cadastrarUsuario({
     required String nome,
     required String email,
@@ -22,7 +23,7 @@ class CadastroService {
           ? TipoUsuario.produtor
           : TipoUsuario.pontoDeVenda;
 
-      // Passamos os novos dados ao criar o objeto Usuario.
+      // Passamos os novos dados ao criar o objeto Usuario
       final novoUsuario = Usuario(
         nome: nome,
         email: email,
@@ -31,7 +32,7 @@ class CadastroService {
         nomeEstabelecimento: nomeEstabelecimento,
         cidade: cidade,
         estado: estado,
-        fotoUrl: fotoUrl, // NOVO
+        fotoUrl: fotoUrl,
       );
 
       await _usuarioRepository.salvar(novoUsuario);

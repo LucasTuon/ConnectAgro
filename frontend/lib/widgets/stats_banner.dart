@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Banner de estatisticas exibido na tela inicial
+
 class StatsBanner extends StatelessWidget {
   const StatsBanner({super.key});
 
@@ -20,7 +22,7 @@ class StatsBanner extends StatelessWidget {
     );
   }
 
-  // Widget auxiliar para criar cada item da estatística
+  // Widget auxiliar para criar cada item da estatistica
   static Widget _buildStatItem(IconData icon, String value, String label) {
     return Column(
       children: [

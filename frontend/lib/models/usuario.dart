@@ -1,4 +1,5 @@
-
+// Modelo que representa um usuario (produtor)
+// Serve para mapear os dados recebidos da API
 class Usuario {
   final int id;
   final String nome;
@@ -16,7 +17,7 @@ class Usuario {
     this.fotoUrl,
   });
 
-  // Este construtor especial sabe como converter o JSON da API em um objeto Usuario.
+  // Metodo para criar um objeto Usuario a partir de um JSON
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
       id: json['id'],

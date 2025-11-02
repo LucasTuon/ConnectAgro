@@ -6,7 +6,7 @@ class UsuarioService {
 
   UsuarioService(this._usuarioRepository);
 
-  /// Solicita a lista de todos os usuários que são produtores.
+  // Metodo para listar todos os produtores
   Future<List<Usuario>> listarProdutores() async {
     try {
       return await _usuarioRepository.listarProdutores();

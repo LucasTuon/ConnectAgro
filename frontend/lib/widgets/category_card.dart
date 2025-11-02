@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// Card de categoria para exibir na tela inicial
+// Mostra imagem, titulo, subtitulo e contagem de produtos
+
 class CategoryCard extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -21,10 +24,8 @@ class CategoryCard extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10.0),
-      // MUDANÇA 1: Envolvemos o Card em um SizedBox para controlar a altura total.
-      // A largura será controlada pela HomePage.
       child: SizedBox(
-        height: 400, // Aumentamos a altura total do card
+        height: 400,
         child: Card(
           color: Colors.white,
           elevation: 2,
@@ -37,19 +38,17 @@ class CategoryCard extends StatelessWidget {
                 flex: 3,
                 child: Image.network(
                   imageUrl,
-                  // A altura é controlada pelo Expanded, não mais por um valor fixo.
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
-              // MUDANÇA 3: O texto agora ocupa 40% da altura (flex: 2 de 5)
               Expanded(
                 flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    // Usamos MainAxisAlignment.spaceBetween para empurrar a contagem para baixo
+                    // MainAxisAlignment.spaceBetween para empurrar a contagem para baixo
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(

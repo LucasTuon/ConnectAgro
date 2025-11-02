@@ -6,6 +6,9 @@ import '../widgets/add_product_dialog.dart';
 import '../widgets/edit_product_dialog.dart';
 import 'home_page.dart';
 
+// Pagina de perfil do usuario
+// Exibe informacoes do usuario e seus produtos ou historico de compras
+
 class ProfilePage extends StatefulWidget {
   final Map<String, dynamic> userData;
   const ProfilePage({super.key, required this.userData});
@@ -14,19 +17,18 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
+
 class _ProfilePageState extends State<ProfilePage> {
   final ApiService _apiService = ApiService();
 
-  // --- MUDANÇA: Variáveis de estado declaradas ---
   late Future<List<Produto>> _meusProdutosFuture;
   late Future<List<Map<String, dynamic>>> _historicoComprasFuture;
 
+  // Inicializacao dos dados com base no tipo de usuario
   @override
   void initState() {
     super.initState();
 
-    // --- MUDANÇA: A lógica de inicialização agora é feita DIRETAMENTE ---
-    // Isso garante que as variáveis 'late' tenham um valor ANTES do primeiro build.
     final String tipoUsuario = widget.userData['tipo_usuario'] ?? '';
     if (tipoUsuario == 'produtor') {
       final int produtorId = widget.userData['id'];
@@ -37,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  // Este método agora é usado apenas para RECARREGAR os dados (após add/edit/delete)
+  // Funcao para atualizar a lista de produtos
   void _fetchProdutos() {
     final int produtorId = widget.userData['id'];
     setState(() {
@@ -45,8 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-  // --- (O resto dos métodos de Ação continua o mesmo) ---
-
+  // Mostra o dialogo para adicionar um novo produto
   void _showAddProductDialog() async {
     final result = await showDialog<bool>(
       context: context,
@@ -57,6 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (result == true) _fetchProdutos();
   }
 
+  // Mostra o dialogo para editar um produto existente
   void _showEditProductDialog(Produto produto) async {
     final result = await showDialog<bool>(
       context: context,
@@ -67,6 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (result == true) _fetchProdutos();
   }
 
+  // Mostra o dialogo de confirmacao para deletar um produto
   void _showDeleteConfirmationDialog(Produto produto) async {
     final result = await showDialog<bool>(
       context: context,
@@ -99,6 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  // Construindo o widget principal
   @override
   Widget build(BuildContext context) {
     final String nome = widget.userData['nome'] ?? 'Usuário';
@@ -241,6 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  // Construindo a DataTable dos produtos
   Widget _buildProdutosDataTable(List<Produto> produtos) {
     return DataTable(
       headingRowColor: MaterialStateProperty.all(const Color(0xFFF0FFF0)),
@@ -266,6 +271,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  // Construindo o perfil para ponto de venda
   Widget _buildPontoDeVendaProfile(Map<String, dynamic> userData, Color primaryGreen) {
     final String? fotoUrl = userData['foto_url'];
     final String nome = userData['nome'] ?? 'Usuário';
@@ -387,6 +393,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  // Widget de apoio para exibir o status da compra
   Widget _buildStatusChip(String status) {
     Color color;
     String label;

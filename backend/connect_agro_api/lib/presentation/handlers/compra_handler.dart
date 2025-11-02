@@ -6,6 +6,7 @@ class CompraHandler {
   final CompraService _compraService;
   CompraHandler(this._compraService);
 
+  // Manipula a requisição para listar o historico de compras (GET /compras/historico/{compradorId})
   Future<Response> listarHistorico(Request request, String compradorIdString) async {
     try {
       final int compradorId = int.parse(compradorIdString);
@@ -27,7 +28,7 @@ class CompraHandler {
     }
   }
 
-  /// Manipula a requisição para finalizar uma compra (POST /compras)
+  /// Manipula a requisicao para finalizar uma compra (POST /compras)
   Future<Response> finalizarCompra(Request request) async {
     try {
       final body = await request.readAsString();
