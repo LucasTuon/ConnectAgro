@@ -1,0 +1,55 @@
+name: CI/CD Frontend Flutter Web
+
+on:
+  # Roda quando há um 'push' para o branch principal
+  push:
+    branches: [ main ]
+    paths:
+      - 'frontend/**' # Caminho do frontend
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'frontend/**'
+  workflow_dispatch: 
+
+jobs:
+  build_and_deploy_web:
+    runs-on: ubuntu-latest
+
+    
+    # === FASE DE INTEGRAÇÃO CONTÍNUA (CI) ===
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          #Adicionar a versão do flutter
+          flutter-version: '3.x.x' 
+
+      - name: Install Dependencies & Run Tests
+        run: |
+          cd frontend # Navega para a pasta do Front-end
+          flutter pub get
+          flutter test # Roda testes unitários da UI
+          
+      - name: Build Flutter Web (Criação do Artefato)
+        run: |
+          cd frontend
+          # Cria os arquivos estáticos (HTML, CSS, JS) para a web
+          flutter build web --release 
+
+        
+      # === FASE DE ENTREGA CONTÍNUA (CD) - Implantação Estática ===
+      
+      - name: Deploy to Hosting Service 
+        uses: w9jds/firebase-action@master 
+        with:
+          args: deploy --only hosting
+          
+        env:
+          # FIREBASE_TOKEN é a chave de segurança para o seu serviço de hospedagem
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          
