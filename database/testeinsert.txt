@@ -1,0 +1,89 @@
+USE connect_agro_db;
+
+DELETE FROM Compras;
+DELETE FROM Produtos;
+DELETE FROM Usuarios;
+
+ALTER TABLE Usuarios AUTO_INCREMENT = 1;
+ALTER TABLE Produtos AUTO_INCREMENT = 1;
+ALTER TABLE Compras AUTO_INCREMENT = 1;
+
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Ana Clara Bastos', 'ana@produtor.com', 'senha123', 'PRODUTOR', 'Sítio Verde Vale', 'Teresópolis', 'RJ', 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Bruno Mendes', 'bruno@produtor.com', 'senha123', 'PRODUTOR', 'Fazenda Sol Nascente', 'Ibiúna', 'SP', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Carla Oliveira', 'carla@produtor.com', 'senha123', 'PRODUTOR', 'Orgânicos da Serra', 'Petrópolis', 'RJ', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Diego Fernandes', 'diego@produtor.com', 'senha123', 'PRODUTOR', 'Rei dos Cereais', 'Castro', 'PR', 'https://images.unsplash.com/photo-1552058544-f2b08422138a');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Elisa Martins', 'elisa@produtor.com', 'senha123', 'PRODUTOR', 'Horta da Elisa', 'Mogi das Cruzes', 'SP', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330');
+
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Mercado Central SP', 'central@mercado.com', 'senha456', 'PONTO_DE_VENDA', 'Mercado Central', 'São Paulo', 'SP', 'https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Varejão Ponto Certo', 'ponto@mercado.com', 'senha456', 'PONTO_DE_VENDA', 'Varejão Ponto Certo', 'Campinas', 'SP', 'https://images.unsplash.com/photo-1567958451986-2de427a4a0be');
+
+INSERT INTO Usuarios (nome, email, senha, tipo_usuario, nome_estabelecimento, cidade, estado, foto_url) VALUES 
+('Quitanda Rio', 'rio@mercado.com', 'senha456', 'PONTO_DE_VENDA', 'Quitanda Rio', 'Rio de Janeiro', 'RJ', 'https://images.unsplash.com/photo-1598030304671-5aa1d6f21128');
+
+
+
+-- FRUTAS 
+INSERT INTO Produtos (nome, descricao, preco, unidade, imagem_url, categoria, quantidade_estoque, avaliacao_media, total_avaliacoes, data_colheita, produtor_id) VALUES
+('Morango Orgânico', 'Morangos doces e suculentos, cultivados no Sítio Verde Vale.', 10.50, 'caixa 250g', 'https://images.unsplash.com/photo-1587474708823-d3b2d415d84d', 'FRUTAS', 100, 4.9, 150, '2025-10-30', 1),
+('Banana Prata', 'Cacho de banana prata orgânica.', 6.50, 'kg', 'https://images.unsplash.com/photo-1528825871115-3581a5387919', 'FRUTAS', 150, 4.7, 120, '2025-10-29', 1),
+('Uva Thompson sem Semente', 'Uvas verdes doces e sem sementes.', 14.00, '500g', 'https://images.unsplash.com/photo-1535643648313-35ea69a25b87', 'FRUTAS', 80, 4.8, 95, '2025-10-30', 1),
+('Tomate Italiano', 'Tomate ideal para molhos. Cultivado pela Ana Clara.', 9.00, 'kg', 'https://images.unsplash.com/photo-1561155634-402c35a02493', 'FRUTAS', 70, 4.6, 88, '2025-10-31', 1);
+
+-- VEGETAIS 
+INSERT INTO Produtos (nome, descricao, preco, unidade, imagem_url, categoria, quantidade_estoque, avaliacao_media, total_avaliacoes, data_colheita, produtor_id) VALUES
+('Alface Crespa Hidropônica', 'Alface fresca e crocante da Fazenda Sol Nascente.', 3.50, 'un', 'https://images.unsplash.com/photo-1550432163-9cb32610532d', 'VEGETAIS', 200, 4.7, 130, '2025-11-01', 2),
+('Cenoura Baby', 'Cenouras doces e pequenas, perfeitas para lanches.', 5.00, 'maço', 'https://images.unsplash.com/photo-1590422229566-7a4d1b09421e', 'VEGETAIS', 180, 4.8, 110, '2025-10-29', 2),
+('Brócolis Ninja', 'Brócolis fresco, rico em nutrientes.', 7.00, 'un', 'https://images.unsplash.com/photo-1584291522818-6c051f5011f0', 'VEGETAIS', 90, 4.6, 99, '2025-10-30', 2),
+('Batata Doce Roxa', 'Batata doce de polpa roxa, rica em antioxidantes.', 8.50, 'kg', 'https://images.unsplash.com/photo-1518977956812-4a3e5e06422a', 'VEGETAIS', 100, 4.9, 142, '2025-10-25', 2);
+
+-- ERVAS 
+INSERT INTO Produtos (nome, descricao, preco, unidade, imagem_url, categoria, quantidade_estoque, avaliacao_media, total_avaliacoes, data_colheita, produtor_id) VALUES
+('Manjericão Fresco', 'Maço grande de manjericão italiano, muito aromático.', 4.00, 'maço', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38', 'ERVAS', 80, 4.8, 90, '2025-11-01', 3),
+('Alecrim', 'Galhos de alecrim fresco, ideal para carnes e pães.', 3.50, 'maço', 'https://images.unsplash.com/photo-1594313016519-640ed47b1c3e', 'ERVAS', 60, 4.7, 75, '2025-11-01', 3),
+('Hortelã', 'Hortelã fresca para chás e sucos. Cultivo da Carla.', 3.00, 'maço', 'https://images.unsplash.com/photo-1556910110-a5a63dfd99b1', 'ERVAS', 100, 4.9, 115, '2025-11-02', 3),
+('Sálvia Fresca', 'Folhas de sálvia para temperos.', 4.50, 'maço', 'https://images.unsplash.com/photo-1508913929698-1e42a479f222', 'ERVAS', 50, 4.6, 60, '2025-10-31', 3);
+
+-- CEREAIS 
+INSERT INTO Produtos (nome, descricao, preco, unidade, imagem_url, categoria, quantidade_estoque, avaliacao_media, total_avaliacoes, data_colheita, produtor_id) VALUES
+('Aveia em Flocos', 'Grãos integrais de aveia, ideal para café da manhã.', 9.00, '500g', 'https://images.unsplash.com/photo-1503442242202-58c063a81223', 'CEREAIS', 150, 4.7, 85, '2025-09-30', 4),
+('Quinoa Real', 'Grãos de quinoa orgânica do Paraná.', 15.00, '500g', 'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e', 'CEREAIS', 100, 4.9, 120, '2025-09-15', 4),
+('Arroz Integral Agulhinha', 'Arroz integral tipo 1, rico em fibras.', 12.00, '1kg', 'https://images.unsplash.com/photo-1586201375765-c120a07530f8', 'CEREAIS', 200, 4.6, 110, '2025-09-20', 4),
+('Feijão Preto Orgânico', 'Feijão preto cultivado pelo Diego, livre de agrotóxicos.', 10.00, '1kg', 'https://images.unsplash.com/photo-1580984857642-33b6e82c598c', 'CEREAIS', 180, 4.8, 130, '2025-09-10', 4);
+
+-- PRODUTOS DIVERSOS 
+INSERT INTO Produtos (nome, descricao, preco, unidade, imagem_url, categoria, quantidade_estoque, avaliacao_media, total_avaliacoes, data_colheita, produtor_id) VALUES
+('Ovos Caipira', 'Dúzia de ovos caipira da Horta da Elisa.', 15.00, 'dúzia', 'https://images.unsplash.com/photo-1598965675027-0205b3833b3e', 'VEGETAIS', 50, 4.9, 200, '2025-11-01', 5),
+('Abóbora Cabotian', 'Abóbora de casca escura e polpa doce.', 6.00, 'kg', 'https://images.unsplash.com/photo-1471336495568-f67e78072709', 'VEGETAIS', 80, 4.7, 70, '2025-10-20', 5),
+('Mel Silvestre', 'Pote de mel puro de flores silvestres.', 25.00, '500g', 'https://images.unsplash.com/photo-1571267425191-3e0f1073c14d', 'FRUTAS', 60, 5.0, 150, '2025-10-01', 5),
+('Limão Siciliano', 'Limões grandes e suculentos.', 9.00, 'kg', 'https://images.unsplash.com/photo-1574345268380-0f36f6d9a58c', 'FRUTAS', 75, 4.8, 88, '2025-10-28', 5);
+
+-- 6. INSERE COMPRAS 
+
+INSERT INTO Compras (ponto_de_venda_id, produto_id, produtor_id, quantidade, preco_total, status_entrega) 
+VALUES (6, 4, 1, 20, (20 * 9.00), 'ENTREGUE');
+
+INSERT INTO Compras (ponto_de_venda_id, produto_id, produtor_id, quantidade, preco_total, status_entrega) 
+VALUES (6, 5, 2, 50, (50 * 3.50), 'A_CAMINHO');
+
+INSERT INTO Compras (ponto_de_venda_id, produto_id, produtor_id, quantidade, preco_total, status_entrega) 
+VALUES (7, 9, 3, 30, (30 * 4.00), 'EM_PREPARACAO');
+
+INSERT INTO Compras (ponto_de_venda_id, produto_id, produtor_id, quantidade, preco_total, status_entrega) 
+VALUES (7, 15, 4, 100, (100 * 12.00), 'ENTREGUE');
+
+INSERT INTO Compras (ponto_de_venda_id, produto_id, produtor_id, quantidade, preco_total, status_entrega) 
+VALUES (8, 19, 5, 40, (40 * 25.00), 'A_CAMINHO');
