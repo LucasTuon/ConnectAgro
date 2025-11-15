@@ -28,6 +28,7 @@ class ProductCard extends StatelessWidget {
               produto.imagemUrl,
               width: double.infinity,
               fit: BoxFit.cover,
+              semanticLabel: 'Imagem de ${produto.nome}',
               errorBuilder: (context, error, stackTrace) => const Center(
                 child: Icon(Icons.error, color: Colors.grey),
               ),

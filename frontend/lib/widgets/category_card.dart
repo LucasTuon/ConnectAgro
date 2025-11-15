@@ -40,6 +40,7 @@ class CategoryCard extends StatelessWidget {
                   imageUrl,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  semanticLabel: 'Imagem da categoria $title',
                 ),
               ),
               Expanded(

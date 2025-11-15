@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'SegoeUI',
       ),
       debugShowCheckedModeBanner: false, 
+
       // Define a HomePage como a tela inicial
       home: const HomePage(),
     );
