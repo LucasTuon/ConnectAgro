@@ -1,7 +1,33 @@
-# ConnectAgro
-Projeto de Laboratório de Engenharia de Software e de Interação Humano-Computador - Aplicação Web ConnectAgro
+> **Conectando quem produz com quem vende, fomentando a agricultura orgânica e sustentável.**
 
-## Integrantes 
+## 📖 Sobre o Projeto
 
-- Lucas Tuon de Matos - 10417987
-- Eduardo Oliveira Carvalho - 10417170
+O **Connect Agro** é uma aplicação móvel desenvolvida em **Flutter** que visa resolver um dos maiores gargalos da agricultura familiar: a logística e a conexão entre pequenos produtores orgânicos e pontos de venda (mercados, restaurantes e feiras).
+
+O objetivo é criar um ecossistema digital que facilite a negociação, aumente a visibilidade dos produtores locais e garanta que alimentos saudáveis cheguem à mesa do consumidor final de forma mais eficiente.
+
+Este projeto foi selecionado e aprovado para o programa de empreendedorismo **Santander XPLorer 2026**.
+
+## 📱 Funcionalidades (MVP)
+
+* **Cadastro de Perfis:** Distinção entre Produtores e Comerciantes/Pontos de Venda.
+* **Vitrine de Produtos:** Listagem de ofertas com fotos, descrições e preços.
+* **Geolocalização:** Encontre produtores ou compradores próximos à sua região.
+* **Chat Integrado:** Comunicação direta para negociação de valores e entrega.
+* **Gestão de Anúncios:** O produtor pode criar, editar e remover seus produtos disponíveis.
+
+## 🎨 Layout e Screenshots
+
+| Login / Cadastro | Home Page | Detalhes do Produto |
+|:---:|:---:|:---:|
+| ![Login](link-para-imagem-login.png) | ![Home](link-para-imagem-home.png) | ![Detalhes](link-para-imagem-detalhes.png) |
+
+*(Substitua os links acima por prints reais do seu app ou remova a tabela se ainda não tiver as imagens)*
+
+## 🛠 Tecnologias Utilizadas
+
+* **Linguagem:** [Dart](https://dart.dev/)
+* **Framework:** [Flutter](https://flutter.dev/)
+* **Gerenciamento de Estado:** [Provider / Bloc / Riverpod] *(Escolha o que você usou)*
+* **Backend/API:** [Firebase / API REST / Node.js] *(Preencha conforme o que foi utilizado)*
+* **IDE:** VS Code / Android Studio
