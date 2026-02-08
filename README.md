@@ -16,13 +16,9 @@ Este projeto foi selecionado e aprovado para o programa de empreendedorismo **Sa
 * **Chat Integrado:** Comunicação direta para negociação de valores e entrega.
 * **Gestão de Anúncios:** O produtor pode criar, editar e remover seus produtos disponíveis.
 
-## 🎨 Layout e Screenshots
+## 🎨 Vídeo Apresentação
 
-| Login / Cadastro | Home Page | Detalhes do Produto |
-|:---:|:---:|:---:|
-| ![Login](link-para-imagem-login.png) | ![Home](link-para-imagem-home.png) | ![Detalhes](link-para-imagem-detalhes.png) |
-
-*(Substitua os links acima por prints reais do seu app ou remova a tabela se ainda não tiver as imagens)*
+* https://youtu.be/oEv3_ei7YEE
 
 ## 🛠 Tecnologias Utilizadas
 
