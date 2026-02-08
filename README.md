@@ -4,9 +4,8 @@
 
 O **Connect Agro** é uma aplicação móvel desenvolvida em **Flutter** que visa resolver um dos maiores gargalos da agricultura familiar: a logística e a conexão entre pequenos produtores orgânicos e pontos de venda (mercados, restaurantes e feiras).
 
-O objetivo é criar um ecossistema digital que facilite a negociação, aumente a visibilidade dos produtores locais e garanta que alimentos saudáveis cheguem à mesa do consumidor final de forma mais eficiente.
+O objetivo é criar um ecossistema digital que facilite a negociação, aumente a visibilidade dos produtores locais e garanta que alimentos saudáveis cheguem à mesa do consumidor final de forma mais eficiente.**
 
-Este projeto foi selecionado e aprovado para o programa de empreendedorismo **Santander XPLorer 2026**.
 
 ## 📱 Funcionalidades (MVP)
 
@@ -24,6 +23,5 @@ Este projeto foi selecionado e aprovado para o programa de empreendedorismo **Sa
 
 * **Linguagem:** [Dart](https://dart.dev/)
 * **Framework:** [Flutter](https://flutter.dev/)
-* **Gerenciamento de Estado:** [Provider / Bloc / Riverpod] *(Escolha o que você usou)*
-* **Backend/API:** [Firebase / API REST / Node.js] *(Preencha conforme o que foi utilizado)*
+* **Backend/API:** [API REST/Dart] *(Preencha conforme o que foi utilizado)*
 * **IDE:** VS Code / Android Studio
