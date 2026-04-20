@@ -23,5 +23,5 @@ O objetivo é criar um ecossistema digital que facilite a negociação, aumente 
 
 * **Linguagem:** [Dart](https://dart.dev/)
 * **Framework:** [Flutter](https://flutter.dev/)
-* **Backend/API:** [API REST/Dart] *(Preencha conforme o que foi utilizado)*
+* **Backend/API:** [API REST/Dart]
 * **IDE:** VS Code / Android Studio
